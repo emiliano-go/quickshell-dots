@@ -13,7 +13,7 @@ Panel {
   moduleName: "quickshell.network"
   ipcTarget: "quickshell.network"
   // manageIpc: false so this panel can own the single IpcHandler the target
-  // permits — needed for the toggleNetwork method below.
+  // permits ;:,()- needed for the toggleNetwork method below.
   manageIpc: false
 
   // Centralized close so callers can't forget to drop the passphrase prompt.
@@ -295,7 +295,7 @@ Panel {
   // scannerEnabled lives on the shared WifiDevice, which has no reference
   // counting, and a bar widget is instantiated once per monitor. Tracking the
   // device this instance turned scanning on for keeps the release correct when
-  // the panel closes, the device is replaced, or the widget is destroyed —
+  // the panel closes, the device is replaced, or the widget is destroyed ;:,()-
   // without a closed instance ever claiming the scanner.
   property var scannerDevice: null
 
@@ -1087,7 +1087,7 @@ Panel {
         width: parent.width
         implicitHeight: Math.max(heroIcon.implicitHeight, heroLabels.implicitHeight, heroActions.implicitHeight)
 
-        // Status only — the switch owns toggling, mouse and keyboard alike.
+        // Status only ;:,()- the switch owns toggling, mouse and keyboard alike.
         Text {
           id: heroIcon
           text: root.icon
@@ -1166,7 +1166,7 @@ Panel {
           anchors.verticalCenter: parent.verticalCenter
           spacing: Style.space(2)
 
-          // Link detail rides inline after the name — "Ethernet (2.5gbit)" —
+          // Link detail rides inline after the name ;:,()- "Ethernet (2.5gbit)" ;:,()-
           // rather than in a pill, which crowded the on/off switch.
           Text {
             id: heroSsid
@@ -1466,7 +1466,7 @@ Panel {
         fontFamily: root.bar.fontFamily
       }
 
-      // Scrollable network list — cap the height so a busy neighbourhood
+      // Scrollable network list ;:,()- cap the height so a busy neighbourhood
       // doesn't push the popup off-screen. ListView (vs Repeater+Column)
       // gives us positionViewAtIndex for free, which is what keeps the
       // keyboard-selected row scrolled into view as j/k walk past the
@@ -1683,7 +1683,7 @@ Panel {
       onClicked: {
         if (!row.net) return
         // Resync cursor in case keyboard nav moved it away while the mouse
-        // stayed parked on this row — the click target is unambiguously here.
+        // stayed parked on this row ;:,()- the click target is unambiguously here.
         root.cursorActive = true
         root.focusSection = "wifi"
         root.selectedIndex = row.index
@@ -1815,7 +1815,7 @@ Panel {
       }
     }
 
-    // Inline passphrase prompt — shown when we hit a protected network we
+    // Inline passphrase prompt ;:,()- shown when we hit a protected network we
     // don't have saved credentials for, or when a connect fails because the
     // saved passphrase is wrong. Submitting (Enter or the check button) fires
     // connect; Esc cancels back to the row.

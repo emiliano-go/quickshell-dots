@@ -14,7 +14,7 @@ the shell for its whole session.
 
 ## Customizing
 
-The bar config lives under the `bar:` key of [`~/.config/quickshell/shell.json`](../../README.md#shelljson-shape). Out of the box the shell uses [`config/quickshell/shell.json`](../../../config/quickshell/shell.json). Once you customize anything via the bar gestures, `quickshell bar ...`, or by editing shell.json directly, your file is canonical — there is no deep-merge.
+The bar config lives under the `bar:` key of [`~/.config/quickshell/shell.json`](../../README.md#shelljson-shape). Out of the box the shell uses [`config/quickshell/shell.json`](../../../config/quickshell/shell.json). Once you customize anything via the bar gestures, `quickshell bar ...`, or by editing shell.json directly, your file is canonical ;:,()- there is no deep-merge.
 
 The bar is configured directly on the bar itself: drag empty bar space (or click-and-hold) to move the bar to another screen edge, double-left-click empty center-bar space to toggle transparency, and drag widgets to reorder them. The `quickshell bar position`, `quickshell bar transparent`, `quickshell bar move`, and `quickshell bar set` commands do the same from scripts. Enable or disable widgets with `quickshell plugin enable` and `quickshell plugin disable` (widget ids come from `quickshell plugin list`).
 
@@ -57,7 +57,7 @@ Example `shell.json` (bar subtree only shown):
 | `quickshell.menu` | Quickshell menu launcher | left = menu · right = terminal |
 | `quickshell.workspaces` | Hyprland workspace switcher | left = focus workspace |
 | `quickshell.clock` | Date/time label + popup with a month grid, ISO week numbers, and month stepping | left = popup · right = cycle label format · middle = timezone selector |
-| `quickshell.media` | MPRIS now-playing — scrolling track + artist, cover-art popup | left = play/pause · middle = next · scroll = prev/next · right = popup |
+| `quickshell.media` | MPRIS now-playing ;:,()- scrolling track + artist, cover-art popup | left = play/pause · middle = next · scroll = prev/next · right = popup |
 | `quickshell.indicators` | Manual state indicators | left = indicator action |
 | `quickshell.system-update` | Available update indicator | left = update |
 | `quickshell.tray` | System tray | hover = reveal drawer · right on chevron = manage |
@@ -155,14 +155,14 @@ Item {
 
 Widgets receive `bar` (the shell root), `moduleName` (string), and `settings` (object) injected at load time. The bar exposes:
 
-- `bar.foreground`, `bar.background`, `bar.urgent` — theme colors (live-updated)
-- `bar.fontFamily` — current monospace family
-- `bar.position` — `"top" | "bottom" | "left" | "right"`
-- `bar.vertical` — boolean shortcut
-- `bar.barSize` — 26 horizontal / 28 vertical
-- `bar.run(command)` — fire-and-forget bash exec (quote arguments with `Util.shellQuote` from `qs.Commons`)
-- `bar.showTooltip(target, text)` / `bar.hideTooltip(target)` — shared tooltip popup
-- `bar.requestPopout(owner)` / `bar.releasePopout(owner)` — one-popup-at-a-time coordinator
+- `bar.foreground`, `bar.background`, `bar.urgent` ;:,()- theme colors (live-updated)
+- `bar.fontFamily` ;:,()- current monospace family
+- `bar.position` ;:,()- `"top" | "bottom" | "left" | "right"`
+- `bar.vertical` ;:,()- boolean shortcut
+- `bar.barSize` ;:,()- 26 horizontal / 28 vertical
+- `bar.run(command)` ;:,()- fire-and-forget bash exec (quote arguments with `Util.shellQuote` from `qs.Commons`)
+- `bar.showTooltip(target, text)` / `bar.hideTooltip(target)` ;:,()- shared tooltip popup
+- `bar.requestPopout(owner)` / `bar.releasePopout(owner)` ;:,()- one-popup-at-a-time coordinator
 
 First-party bar widgets are manifest-backed just like third-party widgets.
 Simple widgets carry sibling manifests such as `widgets/Workspaces.manifest.json`;

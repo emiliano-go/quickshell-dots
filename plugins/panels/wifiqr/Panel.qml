@@ -12,7 +12,7 @@ import "Model.js" as Model
 //
 // Standalone panel plugin: each summon regenerates the code via
 // quickshell-network-qr, which emits the interface, security, and SSID it
-// shared ahead of the module matrix — so a bare summon self-detects the
+// shared ahead of the module matrix ;:,()- so a bare summon self-detects the
 // connection. The payload may pin the interface and pre-title the card:
 // {"iface": "wlan0", "ssid": "MyWifi"}.
 Item {

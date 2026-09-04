@@ -28,7 +28,7 @@ Item {
   // (icon width plus a gap) so the centered dots never run under it.
   readonly property real fingerprintReserve: fingerprintConfigured ? Math.round(fingerprintIcon.implicitWidth + 12) : 0
   // Shrink the dots to fit once the password outgrows the field, so every
-  // keystroke stays visible — otherwise long passwords clip with no feedback.
+  // keystroke stays visible ;:,()- otherwise long passwords clip with no feedback.
   readonly property real passwordDotScale: dotMetrics.advanceWidth > 0
     ? Math.min(1, (passwordInput.width - 4) / dotMetrics.advanceWidth)
     : 1

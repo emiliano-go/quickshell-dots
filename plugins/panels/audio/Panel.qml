@@ -152,14 +152,14 @@ Panel {
   onRawAudioSourcesChanged: if (rawAudioSources.length > 0) cachedAudioSources = rawAudioSources
 
   // Single cursor model shared by keyboard and mouse. Sections:
-  //   "output"  — output slider + sink device list
-  //   "input"   — input slider + source device list
-  //   "streams" — per-app playback streams
+  //   "output"  ;:,()- output slider + sink device list
+  //   "input"   ;:,()- input slider + source device list
+  //   "streams" ;:,()- per-app playback streams
   // selectedIndex semantics within a section:
   //   -1            → on the slider row (h/l adjusts volume, m/Enter mute)
   //   0..N-1        → on the Nth device/stream row
   // Visuals derive from hasCursor/current via CursorSurface, never
-  // from containsMouse — that's what keeps the highlight unique across
+  // from containsMouse ;:,()- that's what keeps the highlight unique across
   // keyboard + mouse like wifi does.
   property string focusSection: "output"
   property int selectedIndex: -1
@@ -269,7 +269,7 @@ Panel {
   // input sliders are real volume controls; on stream rows h/l adjusts
   // that stream's volume (so keyboard parity with the inline slider).
   // For device rows (selectedIndex >= 0 in output/input) h/l is a no-op
-  // — the cursor is on a discrete row, not on the slider, and silently
+  // ;:,()- the cursor is on a discrete row, not on the slider, and silently
   // moving the global slider would surprise the user.
   function adjustVolume(delta) {
     if (focusSection === "output" && selectedIndex === -1) {
@@ -351,7 +351,7 @@ Panel {
   // Keep the keyboard-focused row inside the visible viewport of the
   // ScrollView. Each cursor target (slider rows, SinkRow, SourceRow,
   // StreamRow) calls this when it gains hasCursor. Without it, j/k can
-  // walk the selection off-screen — wifi uses ListView.positionViewAtIndex
+  // walk the selection off-screen ;:,()- wifi uses ListView.positionViewAtIndex
   // for this; we don't have that affordance with a multi-section Column.
   function resetScroll() {
     if (!scrollArea) return
@@ -708,7 +708,7 @@ Panel {
             width: parent.width
             implicitHeight: Math.max(heroIcon.implicitHeight, heroLabels.implicitHeight, powerSwitch.implicitHeight)
 
-            // Status only — the switch owns muting, mouse and keyboard alike.
+            // Status only ;:,()- the switch owns muting, mouse and keyboard alike.
             Text {
               id: heroIcon
               text: root.outputIcon()
@@ -1003,7 +1003,7 @@ Panel {
 
   // ---- Reusable inline components ----
 
-  // Output device row — cursor target inside the "output" section. Mouse
+  // Output device row ;:,()- cursor target inside the "output" section. Mouse
   // hover updates the panel cursor at the root; visuals come entirely
   // from hasCursor/current via CursorSurface, never from containsMouse.
   component SinkRow: CursorSurface {
@@ -1064,7 +1064,7 @@ Panel {
     }
   }
 
-  // Input device row — sibling of SinkRow for the "input" section.
+  // Input device row ;:,()- sibling of SinkRow for the "input" section.
   component SourceRow: CursorSurface {
     id: sourceRow
     required property var node
@@ -1123,7 +1123,7 @@ Panel {
     }
   }
 
-  // Per-app stream row — cursor target inside the "streams" section.
+  // Per-app stream row ;:,()- cursor target inside the "streams" section.
   // The stream has its own slider inline, so h/l from the keyboard
   // adjusts THIS stream's volume (not the global output) when the cursor
   // sits on this row. Enter/Space mutes the stream.

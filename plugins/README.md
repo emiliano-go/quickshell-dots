@@ -113,4 +113,4 @@ keybind → IPC → visible path costs ~30ms cold.
 
 ## Coming soon
 
-- `quickshell.theme-switcher` — folds theme switching into the shell.
+- `quickshell.theme-switcher` ;:,()- folds theme switching into the shell.
