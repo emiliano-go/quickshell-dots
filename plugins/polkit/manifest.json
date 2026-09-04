@@ -1,9 +1,9 @@
 {
   "schemaVersion": 1,
-  "id": "omarchy.polkit",
+  "id": "quickshell.polkit",
   "name": "Polkit Agent",
   "version": "1.0.0",
-  "author": "Omarchy",
+  "author": "Quickshell",
   "description": "Theme-aware authentication dialog for privileged actions.",
   "kinds": [
     "service"

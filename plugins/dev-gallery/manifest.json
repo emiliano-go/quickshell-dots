@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
-  "id": "omarchy.dev-gallery",
+  "id": "quickshell.dev-gallery",
   "name": "Dev gallery",
   "version": "1.0.0",
-  "author": "Omarchy",
-  "description": "Visual reference for omarchy-shell common UI components. Summon with: omarchy-shell shell summon omarchy.dev-gallery '{}' (or run: omarchy dev ui-preview).",
+  "author": "Quickshell",
+  "description": "Visual reference for quickshell-shell common UI components. Summon with: quickshell-shell shell summon quickshell.dev-gallery '{}' (or run: quickshell dev ui-preview).",
   "kinds": [
     "panel"
   ],

@@ -1,9 +1,9 @@
 {
   "schemaVersion": 1,
-  "id": "omarchy.weather",
+  "id": "quickshell.weather",
   "name": "Weather",
   "version": "1.0.0",
-  "author": "Omarchy",
+  "author": "Quickshell",
   "description": "Weather pill with detail popup",
   "kinds": [
     "bar-widget"

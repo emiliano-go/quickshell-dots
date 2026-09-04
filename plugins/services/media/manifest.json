@@ -1,9 +1,9 @@
 {
   "schemaVersion": 1,
-  "id": "omarchy.media",
+  "id": "quickshell.media",
   "name": "Media",
   "version": "1.0.0",
-  "author": "Omarchy",
+  "author": "Quickshell",
   "description": "MPRIS media control service",
   "kinds": [
     "service",

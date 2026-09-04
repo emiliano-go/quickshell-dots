@@ -13,6 +13,6 @@ BarIndicator {
 
   onPressed: function() {
     if (root.bar)
-      root.bar.run("omarchy-capture-text")
+      root.bar.run("quickshell-capture-text")
   }
 }

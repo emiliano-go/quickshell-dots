@@ -11,8 +11,8 @@ import "BarModel.js" as BarModel
 Item {
   id: root
 
-  // The omarchy-shell host injects omarchyPath from OMARCHY_PATH.
-  required property string omarchyPath
+  // The quickshell-shell host injects quickshellPath from QUICKSHELL_PATH.
+  required property string quickshellPath
   // Injected by the host shell so bar slots can resolve enabled widgets.
   required property var barWidgetRegistry
   // Injected by the host shell every time shell.json is reloaded. Holds the
@@ -32,11 +32,11 @@ Item {
   property bool barHidden: false
   property string home: Quickshell.env("HOME")
   property string stateHome: home + "/.local/state"
-  property string omarchyConfigDir: home + "/.config/omarchy"
+  property string quickshellConfigDir: home + "/.config/quickshell"
   property var fallbackBarConfig: ({
     position: "top",
     transparent: false,
-    centerAnchor: "omarchy.clock",
+    centerAnchor: "quickshell.clock",
     layout: { left: [], center: [], right: [] }
   })
   property var layoutConfig: fallbackBarConfig.layout
@@ -57,7 +57,7 @@ Item {
   property int barConfigSerial: 0
   property string position: "top"
   // Resolves through fontconfig at paint time (Style.font.family defaults
-  // to "monospace"), so changing the system font (via `omarchy-font-set`)
+  // to "monospace"), so changing the system font (via `quickshell-font-set`)
   // updates the bar without a reload.
   property string fontFamily: Style.font.family
   // Bound to the central Color singleton so the bar tracks shell.toml's
@@ -492,7 +492,7 @@ Item {
     return monitor ? String(monitor.name || "") : ""
   }
 
-  // Resolve the live bar-widget instance for a plugin id (e.g. "omarchy.bluetooth").
+  // Resolve the live bar-widget instance for a plugin id (e.g. "quickshell.bluetooth").
   // Only widgets that expose popup open/close methods count; plain indicators
   // (clock, workspaces, tray) return null. Used by shell.summon/toggle so
   // panel hotkeys route through the bar instead of a per-target IPC handler
@@ -575,7 +575,7 @@ Item {
   }
 
   function customModuleSource(entry) {
-    var source = BarModel.customModulePath(entry, home, omarchyConfigDir)
+    var source = BarModel.customModulePath(entry, home, quickshellConfigDir)
     return source ? Util.fileUrl(source) : ""
   }
 
@@ -831,7 +831,7 @@ Item {
     if (!requestedTransparent || transparentForegroundProc.running) return
 
     transparentForegroundProc.command = [
-      "omarchy-bar-text-color",
+      "quickshell-bar-text-color",
       root.position,
       String(root.barSize),
       colorHex(root.themeForeground),
@@ -871,7 +871,7 @@ Item {
   }
 
   FileView {
-    path: root.stateHome + "/omarchy/current"
+    path: root.stateHome + "/quickshell/current"
     watchChanges: true
     printErrors: false
     onFileChanged: root.scheduleTransparentForegroundRefresh()
@@ -934,15 +934,15 @@ Item {
 
   // Presence of the `bar-off` flag = bar hidden. Watching the parent toggles
   // directory because FileView can't observe a file that doesn't exist yet,
-  // and the flag is created/removed by `omarchy-toggle-bar`.
+  // and the flag is created/removed by `quickshell-toggle-bar`.
   Process {
     id: barHiddenProbe
     running: true
-    command: ["bash", "-c", "[[ -f $HOME/.local/state/omarchy/toggles/bar-off ]] && echo yes || echo no"]
+    command: ["bash", "-c", "[[ -f $HOME/.local/state/quickshell/toggles/bar-off ]] && echo yes || echo no"]
     stdout: SplitParser { onRead: function(line) { root.barHidden = String(line).trim() === "yes" } }
   }
   FileView {
-    path: root.home + "/.local/state/omarchy/toggles"
+    path: root.home + "/.local/state/quickshell/toggles"
     watchChanges: true
     printErrors: false
     onFileChanged: barHiddenProbe.running = true
@@ -1020,7 +1020,7 @@ Item {
     implicitHeight: root.vertical ? 0 : root.barSize
     color: root.transparent ? "transparent" : root.background
     surfaceFormat.opaque: false
-    WlrLayershell.namespace: "omarchy-bar"
+    WlrLayershell.namespace: "quickshell-bar"
     WlrLayershell.layer: WlrLayer.Top
 
     Loader {
@@ -1163,7 +1163,7 @@ Item {
     visible: active && sourceItem !== null
     color: "transparent"
     exclusionMode: ExclusionMode.Ignore
-    WlrLayershell.namespace: "omarchy-bar-drag-ghost"
+    WlrLayershell.namespace: "quickshell-bar-drag-ghost"
     WlrLayershell.layer: WlrLayer.Overlay
     WlrLayershell.keyboardFocus: WlrKeyboardFocus.None
 
@@ -1225,7 +1225,7 @@ Item {
     visible: root.barMoveActive && screenMatches
     color: "transparent"
     exclusionMode: ExclusionMode.Ignore
-    WlrLayershell.namespace: "omarchy-bar-move-ghost"
+    WlrLayershell.namespace: "quickshell-bar-move-ghost"
     WlrLayershell.layer: WlrLayer.Overlay
     WlrLayershell.keyboardFocus: WlrKeyboardFocus.None
 

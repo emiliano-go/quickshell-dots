@@ -11,14 +11,14 @@ import "Model.js" as Model
 // heavy scrim. Esc or the scrim dismiss it.
 //
 // Standalone panel plugin: each summon regenerates the code via
-// omarchy-network-qr, which emits the interface, security, and SSID it
+// quickshell-network-qr, which emits the interface, security, and SSID it
 // shared ahead of the module matrix — so a bare summon self-detects the
 // connection. The payload may pin the interface and pre-title the card:
 // {"iface": "wlan0", "ssid": "MyWifi"}.
 Item {
   id: root
 
-  property string omarchyPath: Quickshell.env("OMARCHY_PATH")
+  property string quickshellPath: Quickshell.env("QUICKSHELL_PATH")
   property var shell: null
   property var manifest: null
 
@@ -89,7 +89,7 @@ Item {
 
   function dismiss() {
     if (root.shell && typeof root.shell.hide === "function")
-      root.shell.hide((root.manifest && root.manifest.id) || "omarchy.wifiqr")
+      root.shell.hide((root.manifest && root.manifest.id) || "quickshell.wifiqr")
     else close()
   }
 
@@ -125,8 +125,8 @@ Item {
       pwProc.running = false
     }
     qrProc.command = requestedIface
-      ? ["omarchy-network-qr", "--meta", requestedIface]
-      : ["omarchy-network-qr", "--meta"]
+      ? ["quickshell-network-qr", "--meta", requestedIface]
+      : ["quickshell-network-qr", "--meta"]
     qrProc.running = true
   }
 
@@ -150,7 +150,7 @@ Item {
     // Only a deliberate new lookup lowers the canceled-fetch guard, right as
     // it launches -- see the pwProc comment.
     pwExpectedStop = false
-    pwProc.command = ["omarchy-network-password", iface]
+    pwProc.command = ["quickshell-network-password", iface]
     pwProc.running = true
   }
 
@@ -215,7 +215,7 @@ Item {
     anchors { top: true; bottom: true; left: true; right: true }
     color: "transparent"
     exclusionMode: ExclusionMode.Ignore
-    WlrLayershell.namespace: "omarchy-network-qr"
+    WlrLayershell.namespace: "quickshell-network-qr"
     WlrLayershell.layer: WlrLayer.Overlay
     WlrLayershell.keyboardFocus: WlrKeyboardFocus.Exclusive
 
