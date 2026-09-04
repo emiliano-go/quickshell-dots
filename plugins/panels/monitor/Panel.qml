@@ -284,7 +284,7 @@ Panel {
   }
 
   // Playful mood-name for a given brightness percent. Bands intentionally
-  // span ~10–20 points so casual tweaks change the label, while small
+  // span ~10-20 points so casual tweaks change the label, while small
   // nudges within one band don't.
   function brightnessName(percent) {
     return Model.brightnessName(percent)

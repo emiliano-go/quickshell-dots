@@ -276,7 +276,7 @@ Item {
 
   FloatingWindow {
     id: window
-    title: "Quickshell shell – dev gallery"
+    title: "Quickshell shell: dev gallery"
     color: root.background
     implicitWidth: 720
     implicitHeight: 760
