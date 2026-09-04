@@ -13,7 +13,7 @@ Panel {
   manageIpc: false
 
   // manageIpc: false so this panel can own the single IpcHandler the target
-  // permits — needed for the brightness + state methods below.
+  // permits - needed for the brightness + state methods below.
   property int brightnessPercent: 0
   property int pendingBrightnessPercent: 0
   property bool brightnessSetQueued: false
@@ -54,7 +54,7 @@ Panel {
   property int selectedIndex: 0
   property bool cursorActive: false
 
-  // Text size slider — curated macOS-style notches (px). The panel snaps to
+  // Text size slider - curated macOS-style notches (px). The panel snaps to
   // these stops; the CLI (quickshell-display-text-size) accepts any integer in range.
   readonly property var textSizeStops: [9, 10, 11, 12, 14, 16, 20]
   // While a change is in flight, the chosen stop index overrides the live
@@ -64,7 +64,7 @@ Panel {
 
   // A text-size change reflows the whole panel (both font and spacing scale),
   // which slides rows under a stationary pointer and fires synthetic hover.
-  // While true, hover is not allowed to hijack the keyboard focus section —
+  // While true, hover is not allowed to hijack the keyboard focus section -
   // otherwise h/l on the text-size slider can jump focus to another row.
   property bool reflowingText: false
   function markReflowing() {
@@ -122,7 +122,7 @@ Panel {
       if (sIdx > 0) {
         var prev = sections[sIdx - 1]
         focusSection = prev
-        // Coming up from below — land on the last navigable row of the prev
+        // Coming up from below - land on the last navigable row of the prev
         // section, or its sentinel for single-row sections.
         selectedIndex = sectionIsSingleRow(prev) ? sectionFirstIndex(prev) : sectionCount(prev) - 1
       }
@@ -417,7 +417,7 @@ Panel {
     // Do NOT call refresh() after a brightness set completes. The local
     // brightnessPercent we just wrote is authoritative; re-reading via
     // `quickshell-brightness-display` races the hardware/driver and can
-    // return an empty string, which the parser then coerces to 0 —
+    // return an empty string, which the parser then coerces to 0 -
     // visible as a "bounce to zero" after h/l keypresses. External
     // brightness changes are still picked up by the 5s periodic refresh,
     // the open-time refresh, and Component.onCompleted.

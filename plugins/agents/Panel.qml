@@ -121,7 +121,7 @@ Panel {
     return out
   }
 
-  // The window that decides how much room is left — the fullest one, since
+  // The window that decides how much room is left - the fullest one, since
   // that is what stops the next prompt.
   function bindingWindow(p) {
     var windows = limitWindows(p)
@@ -672,7 +672,7 @@ Panel {
                 required property var modelData
                 width: modelSection.width
                 row: modelData
-                // Scaled to the heaviest model, so the top row is always full —
+                // Scaled to the heaviest model, so the top row is always full -
                 // the same scale-to-peak the weekly chart uses for its busiest day.
                 share: modelData.total / Math.max(1, root.models[0].total)
               }
@@ -727,7 +727,7 @@ Panel {
         id: limitValue
         text: limitRow.window && limitRow.window.percent >= 0
           ? Math.round(limitRow.window.percent * 100) + "%"
-          : "—"
+          : "-"
         color: limitRow.alarming ? root.urgent : root.foreground
         font.family: root.fontFamily
         font.pixelSize: Style.font.caption

@@ -59,7 +59,7 @@ function glyphFromHints(hints) {
 
 // The click action: a JSON argv string from quickshell-notification-send
 // --exec. Carried as data so a toast restored after a shell restart stays
-// clickable (a libnotify action can't — its sender is gone). Run via
+// clickable (a libnotify action can't - its sender is gone). Run via
 // Util.execArgv as bash positional parameters, never a shell string, so
 // attacker-controlled values (a title, a filename) can't become commands.
 function execArgvFromHints(hints) {
@@ -69,7 +69,7 @@ function execArgvFromHints(hints) {
 // Validate a persisted quickshell-exec-argv into a runnable argv, or null. This is
 // a STRUCTURAL check only: it fails closed on a malformed hint (non-array, a
 // non-string or empty program, or a leading-dash program that argv would read as
-// an option). It does not judge intent — a well-formed ["bash","-c",…] is
+// an option). It does not judge intent - a well-formed ["bash","-c",…] is
 // accepted. WHICH senders may set this hint is a separate boundary: any
 // session-bus process can, by the freedesktop protocol's design (see
 // docs/notifications.md), which is equivalent to same-uid code execution.
@@ -127,7 +127,7 @@ function popupRoles() {
 
 // Whether a refresh has anything to write. Each property a client updates
 // emits its own signal, and the catch-up refresh after a row is inserted
-// usually finds the object exactly as it was snapshotted — without this,
+// usually finds the object exactly as it was snapshotted - without this,
 // one update would rewrite the file several times over.
 function popupRowChanged(row, updated) {
   var current = row || {}
@@ -275,7 +275,7 @@ function serializePopup(entry, normalUrgency) {
 // Parse the concatenation of every persisted popup file into entries,
 // newest-first. Deliberately NO dedupe by originalId: ids restart from 1
 // with every server process, so two files sharing an id are usually
-// different generations — dropping the older one would silently discard a
+// different generations - dropping the older one would silently discard a
 // restored critical alert the moment a fresh notification reuses its id.
 // The one case that leaves a genuine duplicate (a crash between a
 // replacement's write and the replaced file's delete) merely re-shows a
@@ -290,7 +290,7 @@ function parsePopupFiles(raw, normalUrgency) {
       var value = JSON.parse(line)
       if (value && typeof value === "object") entries.push(popupEntry(value, normalUrgency))
     } catch (e) {
-      // A torn write from a crash mid-save — skip the line, keep the rest.
+      // A torn write from a crash mid-save - skip the line, keep the rest.
     }
   }
   entries.sort(function(a, b) { return (b.timestamp || 0) - (a.timestamp || 0) })
@@ -335,7 +335,7 @@ function popupPlacement(barPosition, barClearance, gapsOut) {
 // gets the standard on-screen lifetime for its urgency instead.
 //
 // liveRows are the toasts still on screen when the replay was asked for.
-// They belong in it — they're the newest notifications there are — but the
+// They belong in it - they're the newest notifications there are - but the
 // directory read races their archival, so they're carried across by hand and
 // keyed by file name (timestamp + id) to drop the copy the read already saw.
 function historyRows(raw, liveRows, normalUrgency, limit) {

@@ -3,7 +3,7 @@ import Quickshell
 import Quickshell.Io
 import qs.Commons
 
-// Instance, not a singleton — see BarWidgetRegistry for rationale.
+// Instance, not a singleton - see BarWidgetRegistry for rationale.
 QtObject {
   id: registry
 
@@ -20,7 +20,7 @@ QtObject {
   property var shellConfigProvider: null
   property var shellConfigMutator: null
 
-  // { pluginId: manifest } — manifests have __sourceDir and __isFirstParty stamped in.
+  // { pluginId: manifest } - manifests have __sourceDir and __isFirstParty stamped in.
   property var installedPlugins: ({})
   property int registryRevision: 0
   property bool scanning: false
@@ -158,7 +158,7 @@ QtObject {
 
   // A bar widget is on when it sits in the bar, whoever shipped it. That is a
   // different question from isEnabled(), which decides whether the widget's
-  // component is loaded at all — a built-in stays loadable so it can be put
+  // component is loaded at all - a built-in stays loadable so it can be put
   // back, and so a plugin that is both a widget and a menu (quickshell.menu)
   // cannot be locked out of the shell by taking its button off the bar.
   function inBar(id) {
