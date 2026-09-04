@@ -14,7 +14,7 @@ Panel {
   property var anchorItem: null
   property bool openedFromHotkey: false
 
-  // The bar tracks the widget mounted in its slot ;:,()- BarWidget.qml ;:,()- not this
+  // The bar tracks the widget mounted in its slot — BarWidget.qml — not this
   // nested panel. Everything the bar identifies a panel by has to be that
   // widget: the popout coordinator (and with it the open-panel dot under the
   // pill) compares against `slot.activeItem`, and switchPanelFrom looks the
@@ -155,7 +155,7 @@ Panel {
     dailyForecastRetries = 0
     if (!forecastProc.running) forecastProc.running = true
     if (root.locationQuery === "" && !locationProc.running) locationProc.running = true
-    // With stored coordinates this fetches open-meteo right away ;:,()- no need
+    // With stored coordinates this fetches open-meteo right away — no need
     // to wait for the slow wttr response. Without them it's a no-op until
     // wttr reports the detected area.
     refreshDailyForecast(null)
@@ -533,7 +533,7 @@ Panel {
             id: heroIcon
             anchors.verticalCenter: parent.verticalCenter
             anchors.verticalCenterOffset: 5
-            text: root.label || ";:,()-"
+            text: root.label || "—"
             color: root.bar.foreground
             font.family: root.bar.fontFamily
             // Decorative condition emoji; intentionally larger than the
@@ -547,7 +547,7 @@ Panel {
 
             Text {
               id: tempBig
-              text: root.reportTempNum || ";:,()-"
+              text: root.reportTempNum || "—"
               color: root.bar.foreground
               font.family: root.bar.fontFamily
               // Hero temperature read-out; deliberately oversized, outside

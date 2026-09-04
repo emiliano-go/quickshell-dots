@@ -2,8 +2,8 @@
 
 `quickshell-shell` is a single long-running [Quickshell](https://quickshell.org/)
 instance that hosts the Quickshell desktop. Hyprland autostart launches one shell
-per graphical session; everything else ;:,()- the bar, background switcher, panels,
-and overlays ;:,()- runs **inside** the shell as a plugin.
+per graphical session; everything else — the bar, background switcher, panels,
+and overlays — runs **inside** the shell as a plugin.
 
 Hosting everything inside one shell means:
 
@@ -111,7 +111,7 @@ quickshell plugin remove acme.weather
 
 Each command is **interactive** when run bare in a terminal (gum pickers,
 confirmation, a diff to review) and fully **non-interactive** when given
-arguments. Pass `--yes` to skip every prompt ;:,()- this is the path for scripts and
+arguments. Pass `--yes` to skip every prompt — this is the path for scripts and
 AI agents:
 
 ```bash
@@ -119,7 +119,7 @@ quickshell plugin add https://github.com/acme/quickshell-weather.git --enable --
 quickshell plugin update --yes
 ```
 
-The installer never runs plugin code, install hooks, or sudo ;:,()- it only clones
+The installer never runs plugin code, install hooks, or sudo — it only clones
 files, validates the manifest, and toggles enabled state over shell IPC. Since
 an installed plugin is a plain git checkout, anything beyond add/update
 (pinning a ref, switching branches) is ordinary git in the plugin directory.
@@ -177,10 +177,10 @@ running a separate Quickshell instance.
 |------------------------------------------|---------|-------------------------------------------------------|
 | `ping`                                   | `ok`    | health check                                          |
 | `summon <id> <payloadJson>`              | `ok` / `unknown` | load + open a panel/overlay plugin           |
-| `hide <id>`                              | ;:,()-       | close a previously-summoned plugin                    |
-| `toggle <id> <payloadJson>`              | ;:,()-       | summon if closed, hide if open                        |
+| `hide <id>`                              | —       | close a previously-summoned plugin                    |
+| `toggle <id> <payloadJson>`              | —       | summon if closed, hide if open                        |
 | `call <id> <method> <arg>`               | string  | call a method on an already-loaded plugin             |
-| `rescanPlugins`                          | ;:,()-       | re-walk plugin dirs and hot-reload plugin code        |
+| `rescanPlugins`                          | —       | re-walk plugin dirs and hot-reload plugin code        |
 | `reloadConfig`                           | `ok`    | reload `~/.config/quickshell/shell.json`                 |
 | `setPluginEnabled <id> <enabled>`        | `ok` / `unknown` | flip the persisted enabled bit (see note)    |
 | `listPlugins`                            | JSON    | every discovered plugin, sorted by name               |
@@ -223,7 +223,7 @@ customization from the shipped defaults lives in it.
 The `config/quickshell/shell.json` default config describes the
 fresh-install state. When the user has no `shell.json`, the shell uses
 the defaults verbatim. Once the user customizes anything, `shell.json`
-becomes the authoritative file ;:,()- we do **not** deep-merge defaults back in.
+becomes the authoritative file — we do **not** deep-merge defaults back in.
 
 ### shell.json shape
 
@@ -271,7 +271,7 @@ becomes the authoritative file ;:,()- we do **not** deep-merge defaults back in.
    other plugin kinds are enabled the same way. First-party non-bar plugins
    are enabled unless listed in `disabledPlugins[]`.
 6. **Multiple instances** are allowed when a manifest sets
-   `allowMultiple: true`. Each instance is independent ;:,()- e.g. two clock
+   `allowMultiple: true`. Each instance is independent — e.g. two clock
    widgets in different timezones are just two `{"id":"quickshell.clock", "timezone": ...}`
    entries with their own values.
 7. **Idle timings are top-level.** `idle.screensaver` and `idle.lock`
@@ -284,14 +284,14 @@ becomes the authoritative file ;:,()- we do **not** deep-merge defaults back in.
 
 Built up in phases on this branch:
 
-- Phase 1 ;:,()- `quickshell-shell phase 1: host the existing bar in a single shell`
-- Phase 2 ;:,()- `quickshell-shell phase 2: plugin registry and bar widget registry`
-- Phase 3 ;:,()- `quickshell-shell phase 3: fold bar-settings into the shell as a panel plugin`
-- Phase 4 ;:,()- `quickshell-shell phase 4: absorb background-switcher as a plugin`
-- Phase 5 ;:,()- `quickshell-shell phase 5: docs, cleanup, and migration crumbs`
-- Phase 6 ;:,()- `quickshell-shell phase 6: reviewer cleanup (path traversal, collision, races)`
-- Phase 7 ;:,()- `quickshell-shell phase 7: replace socket with IpcHandler, rename to image-picker`
-- Phase 8a ;:,()- `quickshell-shell phase 8a: unified shell.json with inline plugin settings`
+- Phase 1 — `quickshell-shell phase 1: host the existing bar in a single shell`
+- Phase 2 — `quickshell-shell phase 2: plugin registry and bar widget registry`
+- Phase 3 — `quickshell-shell phase 3: fold bar-settings into the shell as a panel plugin`
+- Phase 4 — `quickshell-shell phase 4: absorb background-switcher as a plugin`
+- Phase 5 — `quickshell-shell phase 5: docs, cleanup, and migration crumbs`
+- Phase 6 — `quickshell-shell phase 6: reviewer cleanup (path traversal, collision, races)`
+- Phase 7 — `quickshell-shell phase 7: replace socket with IpcHandler, rename to image-picker`
+- Phase 8a — `quickshell-shell phase 8a: unified shell.json with inline plugin settings`
 
 Shared services and Pipewire/UPower/Hyprland consolidation are explicitly
 out of scope here and deferred to a follow-up after a review pass.

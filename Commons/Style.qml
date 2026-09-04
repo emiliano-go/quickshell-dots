@@ -4,12 +4,12 @@ import Quickshell
 import Quickshell.Io
 
 // Shared structural style tokens for the shell. Color is the palette
-// singleton; Style holds everything else themes can influence ;:,()- corner
+// singleton; Style holds everything else themes can influence — corner
 // rounding, gap to screen edges, state affordances, spacing, typography
 // scale, and bar dimensions.
 //
 // `cornerRadius` mirrors Hyprland's `decoration:rounding`. `gapsOut` is
-// half of Hyprland's `general:gaps_out` ;:,()- Hyprland's value works well as
+// half of Hyprland's `general:gaps_out` — Hyprland's value works well as
 // a window-to-window gap but feels too cavernous when used as the
 // distance from a panel/notification to the screen edge, so the shell
 // halves it. Themes and user Hyprland config own those values; the
@@ -35,10 +35,10 @@ QtObject {
   //
   // Shared interactive-state tokens for every reusable surface in the kit.
   // The vocabulary:
-  //   normal       ;:,()- idle control chrome
-  //   hover-cursor ;:,()- mouse hover OR panel keyboard cursor (`hasCursor`)
-  //   selected     ;:,()- persistent chosen/current state
-  //   focus        ;:,()- actual Qt activeFocus, defaulting to hover-cursor
+  //   normal       — idle control chrome
+  //   hover-cursor — mouse hover OR panel keyboard cursor (`hasCursor`)
+  //   selected     — persistent chosen/current state
+  //   focus        — actual Qt activeFocus, defaulting to hover-cursor
   //
   // Each state has a color token plus fill/border alphas. Color tokens
   // may be palette roles (`foreground`, `accent`, `urgent`, `background`)
@@ -362,7 +362,7 @@ QtObject {
       var n = Number(json.int)
       if (isFinite(n) && n >= 0) cornerRadius = n
     } catch (e) {
-      // hyprctl missing / Hyprland not running ;:,()- leave the previous value.
+      // hyprctl missing / Hyprland not running — leave the previous value.
     }
   }
 
@@ -374,7 +374,7 @@ QtObject {
       var n = parts.length > 0 ? Number(parts[0]) : Number(json.int)
       if (isFinite(n) && n >= 0) gapsOut = Math.max(0, Math.round(n / 2))
     } catch (e) {
-      // hyprctl missing / Hyprland not running ;:,()- leave the previous value.
+      // hyprctl missing / Hyprland not running — leave the previous value.
     }
   }
 
@@ -425,7 +425,7 @@ QtObject {
       }
     }
     // Keep only a 1px sanity floor. Per-token overrides aren't clamped
-    // either ;:,()- a theme that wants display-large = 64 should be allowed to
+    // either — a theme that wants display-large = 64 should be allowed to
     // ship it.
     if (!isFinite(nextBase) || nextBase < 1) nextBase = 1
     if (!isFinite(nextSpacingScale) || nextSpacingScale < 0) nextSpacingScale = 1.0
